@@ -9,8 +9,8 @@ using postgre1.DataAccess;
 namespace postgre1.Migrations
 {
     [DbContext(typeof(PostgreSqlContext))]
-    [Migration("20211221060052_initial")]
-    partial class initial
+    [Migration("20211226082421_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,8 +22,13 @@ namespace postgre1.Migrations
 
             modelBuilder.Entity("postgre1.Models.Patient", b =>
                 {
-                    b.Property<string>("id")
-                        .HasColumnType("text");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<bool>("activated")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("address")
                         .HasColumnType("text");

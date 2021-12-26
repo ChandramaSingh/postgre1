@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace postgre1.Migrations
 {
-    public partial class initial : Migration
+    public partial class inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,12 +11,14 @@ namespace postgre1.Migrations
                 name: "patients",
                 columns: table => new
                 {
-                    id = table.Column<string>(nullable: false),
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(nullable: true),
                     address = table.Column<string>(nullable: true),
                     city = table.Column<string>(nullable: true),
                     age = table.Column<float>(nullable: false),
-                    gender = table.Column<string>(nullable: true)
+                    gender = table.Column<string>(nullable: true),
+                    activated = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

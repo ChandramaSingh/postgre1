@@ -20,8 +20,13 @@ namespace postgre1.Migrations
 
             modelBuilder.Entity("postgre1.Models.Patient", b =>
                 {
-                    b.Property<string>("id")
-                        .HasColumnType("text");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<bool>("activated")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("address")
                         .HasColumnType("text");
