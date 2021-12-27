@@ -69,6 +69,7 @@ namespace PostGreTestN
             result.Should().BeEquivalentTo(firstPatient);
         }
 
+
         [Fact]
         public void GetEmployeeById_shouldReturnBadRequest_EmployeeWithIDNotExists()
         {
